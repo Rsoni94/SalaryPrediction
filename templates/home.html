@@ -1,44 +1,240 @@
-<!DOCTYPE html>
-<html >
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Prediction</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Prediction</title>
 
-  
+
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+    <!-- css -->
+    <link rel="stylesheet" href="static/style.css">
+
+
 </head>
 
 <body>
- <div class="login">
-	<h1>Adult Census Salary Prediction</h1>
 
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-      <input type="text" name="CRIM" placeholder="Age" required="required" /><br>
-    	<input type="text" name="ZN" placeholder="Capital_gain" required="required" /><br>
-        <input type="text" name="INDUS" placeholder="Capital_loss" required="required" /><br>
-        <input type="text" name="CHAS" placeholder="WorkClass" required="required" /><br>
-        <input type="text" name="NOX" placeholder="Marital_Status" required="required" /><br>
-        <input type="text" name="RM" placeholder="Education" required="required" /><br>
-        <input type="text" name="Age" placeholder="Occupation" required="required" /><br>
-        <input type="text" name="DIS" placeholder="Race" required="required" /><br>
-        <input type="text" name="RAD" placeholder="Relationship" required="required" /><br>
-        <input type="text" name="TAX" placeholder="Country" required="required" /><br>       
-   
+    <!-- As a heading -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">SALARY PREDICTION</a>
+            </div>
+        </div>
+    </nav>
 
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict Salary</button>
-    </form>
+    <br><br><br>
 
-   <br>
-   <br>
-  
-   
- </div>
- {{prediction_text}}
+
+    <div class="container">
+
+
+
+        <form action="/predict" method="post">
+
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- Workclass -->
+                            <h5 class="card-title">Workclass</h5>
+                            <select name="workclass" id="workclass" required="required">
+                                <option value="Local_gov">Local_gov</option>
+                                <option value="Never_worked">Never_worked</option>
+                                <option value="Private">Private</option>
+                                <option value="Self_emp_inc">Self_emp_inc</option>
+                                <option value="Self_emp_not_inc">Self_emp_not_inc</option>
+                                <option value="State_gov">State_gov</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Education</h5>
+                            <!-- Education -->
+                            <select name="education" id="education" required="required">
+                                <option value="Bachelors">Bachelors</option>
+                                <option value="College">College</option>
+                                <option value="Doctorate">Doctorate</option>
+                                <option value="Masters">Masters</option>
+                                <option value="school">school</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Marital-Status</h5>
+                            <!-- Marital-Status -->
+                            <select name="marital_status" id="marital_status" required="required">
+                                <option value="Married_AF_spouse">Married_AF_spouse</option>
+                                <option value="Married_civ_spouse">Married_civ_spouse</option>
+                                <option value="Married_spouse_absent">Married_spouse_absent</option>
+                                <option value="Never_married">Never_married</option>
+                                <option value="Separated">Separated</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Occupation</h5>
+                                <!-- Occupation -->
+                                <select name="occupation" id="occupation" required="required">
+                                    <option value="Craft_repair">Craft_repair</option>
+                                    <option value="Exec_managerial">Exec_managerial</option>
+                                    <option value="Farming_fishing">Farming_fishing</option>
+                                    <option value="Handlers_cleaners">Handlers_cleaners</option>
+                                    <option value="Machine_op_inspct">Machine_op_inspct</option>
+                                    <option value="Other_service">Other_service</option>
+                                    <option value="Others_occupation">Others_occupation</option>
+                                    <option value="Priv_house_serv">Priv_house_serv</option>
+                                    <option value="Prof_specialty">Prof_specialty</option>
+                                    <option value="Protective_serv">Protective_serv</option>
+                                    <option value="Sales">Sales</option>
+                                    <option value="Tech_support">Tech_support</option>
+                                    <option value="Transport_moving">Transport_moving</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Relationship</h5>
+                                <!-- relationship -->
+                                <select name="relationship" id="relationship" required="required">
+                                    <option value="Not_in_family">Not_in_family</option>
+                                    <option value="Other_relative">Other_relative</option>
+                                    <option value="Own_child ">Own_child </option>
+                                    <option value="Unmarried">Unmarried</option>
+                                    <option value="Wife">Wife</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Race</h5>
+                                <!-- race -->
+                                <select name="race" id="race" required="required">
+                                    <option value="Asian_Pac_Islander">Asian_Pac_Islander</option>
+                                    <option value="Black">Black</option>
+                                    <option value="Other">Other</option>
+                                    <option value="White">Unmarried</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Sex</h5>
+                                <!-- sex -->
+                                <select name="sex" id="sex" required="required">
+                                    <option value="Male">Male</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Country</h5>
+                                <!-- country -->
+                                <select name="country" id="country" required="required">
+                                    <option value="United_States">United_States</option>
+                                    <option value="Cuba">Cuba</option>
+                                    <option value="Jamaica">Jamaica</option>
+                                    <option value="India">India</option>
+                                    <option value="Others_country">Others_country</option>
+                                    <option value="Mexico">Mexico</option>
+                                    <option value="South">South</option>
+                                    <option value="Puerto_Rico">Puerto_Rico</option>
+                                    <option value="Honduras">Honduras</option>
+                                    <option value="England">England</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="Iran">Iran</option>
+                                    <option value="Philippines">Philippines</option>
+                                    <option value="Italy">Italy</option>
+                                    <option value="Poland">Poland</option>
+                                    <option value="Columbia">Columbia</option>
+                                    <option value="Thailand">Thailand</option>
+                                    <option value="Ecuador">Ecuador</option>
+                                    <option value="Laos">Laos</option>
+                                    <option value="Taiwan">Taiwan</option>
+                                    <option value="Haiti">Haiti</option>
+                                    <option value="Portugal">Portugal</option>
+                                    <option value="Dominican_Republic">Dominican_Republic</option>
+                                    <option value="El_Salvador">El_Salvador</option>
+                                    <option value="France">France</option>
+                                    <option value="Guatemala">Guatemala</option>
+                                    <option value="China">China</option>
+                                    <option value="Japan">Japan</option>
+                                    <option value="Yugoslavia">Yugoslavia</option>
+                                    <option value="Peru">Peru</option>
+                                    <option value="Outlying_US_Guam_USVI_etc">Outlying_US_Guam_USVI_etc</option>
+                                    <option value="Scotland">Scotland</option>
+                                    <option value="Trinadad_Tobago">Trinadad_Tobago</option>
+                                    <option value="Greece">Greece</option>
+                                    <option value="Nicaragua">Nicaragua</option>
+                                    <option value="Vietnam">Vietnam</option>
+                                    <option value="Hong">Hong</option>
+                                    <option value="Ireland">Ireland</option>
+                                    <option value="Hungary">Hungary</option>
+                                    <option value="Holand_Netherlands">Holand_Netherlands</option>                                
+                                </select>
+                            </div>
+                        </div>
+                    </div>        
+                </div>
+            <br>
+            <br>
+            <br>
+            <!-- Submit -->
+            <input type="submit" value="Submit" class="btn btn-secondary">
+        </form>
+
+        <br>
+        <br>
+        <h3>{{ prediction_text }}</h3>
+
+        <br>
+        <br>
+        <p>©2020 Amar Mandal</p>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
 
 </body>
+
 </html>
