@@ -51,6 +51,8 @@
                                 <option value="Self_emp_inc">Self_emp_inc</option>
                                 <option value="Self_emp_not_inc">Self_emp_not_inc</option>
                                 <option value="State_gov">State_gov</option>
+                                <option value="Federal_gov">Federal_gov</option>
+                                <option value="Without_pay">Federal_gov</option>
                             </select>
                         </div>
                     </div>
@@ -67,6 +69,7 @@
                                 <option value="Doctorate">Doctorate</option>
                                 <option value="Masters">Masters</option>
                                 <option value="school">school</option>
+                                <option value="Associate">Associate</option>
                             </select>
                         </div>
                     </div>
@@ -85,6 +88,8 @@
                                 <option value="Married_spouse_absent">Married_spouse_absent</option>
                                 <option value="Never_married">Never_married</option>
                                 <option value="Separated">Separated</option>
+                                <option value="Divorced">Divorced</option>
+                                <option value="Widowed">Widowed</option>
                             </select>
                         </div>
                     </div>
@@ -109,6 +114,8 @@
                                     <option value="Sales">Sales</option>
                                     <option value="Tech_support">Tech_support</option>
                                     <option value="Transport_moving">Transport_moving</option>
+                                    <option value="Adm-clerical">Adm-clerical</option>
+                                    <option value="Armed_Forces">Armed_Forces</option>
                                 </select>
                             </div>
                         </div>
@@ -126,6 +133,7 @@
                                     <option value="Own_child ">Own_child </option>
                                     <option value="Unmarried">Unmarried</option>
                                     <option value="Wife">Wife</option>
+                                    <option value="Husband">Husband</option>
                                 </select>
                             </div>
                         </div>
@@ -140,6 +148,7 @@
                                     <option value="Black">Black</option>
                                     <option value="Other">Other</option>
                                     <option value="White">Unmarried</option>
+                                    <option value="Amer_Indian_Eskimo">Amer_Indian_Eskimo</option>
                                 </select>
                             </div>
                         </div>
@@ -151,6 +160,7 @@
                                 <!-- sex -->
                                 <select name="sex" id="sex" required="required">
                                     <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
                                 </select>
                             </div>
                         </div>
@@ -201,12 +211,53 @@
                                     <option value="Hong">Hong</option>
                                     <option value="Ireland">Ireland</option>
                                     <option value="Hungary">Hungary</option>
-                                    <option value="Holand_Netherlands">Holand_Netherlands</option>                                
+                                    <option value="Holand_Netherlands">Holand_Netherlands</option>
+                                    <option value="Cambodia">Cambodia</option>                                
                                 </select>
                             </div>
                         </div>
                     </div>        
                 </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Age</h5>
+                                <!-- Departure -->
+                                <input type="age" name="age" id="age" required="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">How much Capital Gain?</h5>
+                                    <!-- Departure -->
+                                    <input type="capital_gain" name="capital_gain" id="capital_gain" required="required">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">How much Capital Loss?</h5>
+                                        <!-- Departure -->
+                                        <input type="capital_loss" name="capital_loss" id="capital_loss" required="required">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Hours Per Week</h5>
+                                            <!-- Departure -->
+                                            <input type="hours_per_week" name="hours_per_week" id="hours_per_week" required="required">
+                                        </div>
+                                    </div>
+                                </div>
             <br>
             <br>
             <br>
@@ -220,7 +271,7 @@
 
         <br>
         <br>
-        <p>©2020 Amar Mandal</p>
+
 
     </div>
 

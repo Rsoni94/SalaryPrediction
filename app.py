@@ -27,6 +27,7 @@ def predict():
             Self_emp_inc = 0
             Self_emp_not_inc = 0
             State_gov = 0
+            Without_pay = 0
 
         elif (workclass=='Never_worked'):
             Never_worked = 1
@@ -35,7 +36,7 @@ def predict():
             Self_emp_inc = 0
             Self_emp_not_inc = 0
             State_gov = 0
-
+            Without_pay = 0
             
         elif (workclass=='Private'):
             Private = 1
@@ -44,6 +45,7 @@ def predict():
             Self_emp_inc = 0
             Self_emp_not_inc = 0
             State_gov = 0
+            Without_pay = 0
 
         elif (workclass=='Self_emp_inc'):
             Self_emp_inc = 1
@@ -52,6 +54,7 @@ def predict():
             Local_gov = 0
             Self_emp_not_inc = 0
             State_gov = 0
+            Without_pay = 0
             
         elif (workclass=='Self_emp_not_inc'):
             Self_emp_not_inc = 1
@@ -60,6 +63,7 @@ def predict():
             Never_worked = 0
             Local_gov = 0
             State_gov = 0
+            Without_pay = 0
 
         elif (workclass=='State_gov'):
             State_gov = 1
@@ -68,7 +72,17 @@ def predict():
             Private = 0
             Never_worked = 0
             Local_gov = 0
-            
+            Without_pay = 0
+        
+        elif (workclass=='State_gov'):
+            Without_pay = 1
+            State_gov = 0
+            Self_emp_not_inc = 0
+            Self_emp_inc = 0
+            Private = 0
+            Never_worked = 0
+            Local_gov = 0
+
         else:
             Local_gov = 0
             Never_worked = 0
@@ -76,6 +90,7 @@ def predict():
             Self_emp_inc = 0
             Self_emp_not_inc = 0
             State_gov = 0
+            Without_pay = 0
 
         # Education
         education = request.form["education"]
@@ -85,6 +100,7 @@ def predict():
             Doctorate = 0
             Masters = 0
             school = 0
+            status_Married_AF_spouse = 0
 
         elif (education == 'College'):
             College = 1
@@ -92,6 +108,7 @@ def predict():
             Doctorate = 0
             Masters = 0
             school = 0
+            status_Married_AF_spouse = 0
 
         elif (education == 'Doctorate'):
             Doctorate = 1
@@ -99,6 +116,7 @@ def predict():
             Bachelors = 0
             Masters = 0
             school = 0
+            status_Married_AF_spouse = 0
 
         elif (education == 'Masters'):
             Masters = 1
@@ -106,6 +124,7 @@ def predict():
             College = 0
             Bachelors = 0
             school = 0
+            status_Married_AF_spouse = 0
 
         elif (education == 'school'):
             school = 1
@@ -113,6 +132,16 @@ def predict():
             Doctorate = 0
             College = 0
             Bachelors = 0
+            status_Married_AF_spouse = 0
+
+        elif (education == 'school'):
+            status_Married_AF_spouse = 1
+            school = 0
+            Masters = 0
+            Doctorate = 0
+            College = 0
+            Bachelors = 0
+
 
         else:
             Bachelors = 0
@@ -129,6 +158,7 @@ def predict():
             Married_spouse_absent = 0
             Never_married = 0
             Separated = 0
+            Widowed = 0
         
         elif (marital_status == 'Married_civ_spouse'):
             Married_civ_spouse = 1
@@ -136,6 +166,7 @@ def predict():
             Married_spouse_absent = 0
             Never_married = 0
             Separated = 0
+            Widowed = 0
 
         elif (marital_status == 'Married_spouse_absent'):
             Married_spouse_absent = 1
@@ -143,6 +174,7 @@ def predict():
             Married_AF_spouse = 0
             Never_married = 0
             Separated = 0
+            Widowed = 0
 
         elif (marital_status == 'Never_married'):
             Never_married = 1
@@ -150,6 +182,7 @@ def predict():
             Married_civ_spouse = 0
             Married_AF_spouse = 0
             Separated = 0
+            Widowed = 0
 
         elif (marital_status == 'Separated'):
             Separated = 1
@@ -157,13 +190,23 @@ def predict():
             Married_spouse_absent = 0
             Married_civ_spouse = 0
             Married_AF_spouse = 0
+            Widowed = 0
         
-        else:
-            Married_AF_spouse = 0
-            Married_civ_spouse = 0
-            Married_spouse_absent = 0
-            Never_married = 0
+        elif (marital_status == 'Widowed'):
+            Widowed = 1
             Separated = 0
+            Never_married = 0
+            Married_spouse_absent = 0
+            Married_civ_spouse = 0
+            Married_AF_spouse = 0
+
+        else:
+            Widowed = 0
+            Separated = 0
+            Never_married = 0
+            Married_spouse_absent = 0
+            Married_civ_spouse = 0
+            Married_AF_spouse = 0
 
         # occupation
         occupation = request.form["occupation"]
@@ -181,6 +224,7 @@ def predict():
             Sales = 0
             Tech_support = 0
             Transport_moving = 0
+            Armed_Forces = 0
         
         elif (occupation == 'Exec_managerial'):
             Exec_managerial = 1
@@ -196,7 +240,7 @@ def predict():
             Sales = 0
             Tech_support = 0
             Transport_moving = 0
-            
+            Armed_Forces = 0
 
         elif (occupation == 'Farming_fishing'):
             Farming_fishing = 1
@@ -212,6 +256,7 @@ def predict():
             Sales = 0
             Tech_support = 0
             Transport_moving = 0
+            Armed_Forces = 0
 
         elif (occupation == 'Handlers_cleaners'):
             Handlers_cleaners = 1
@@ -227,6 +272,7 @@ def predict():
             Sales = 0
             Tech_support = 0
             Transport_moving = 0
+            Armed_Forces = 0
 
         elif (occupation == 'Machine_op_inspct'):
             Machine_op_inspct = 1
@@ -242,6 +288,7 @@ def predict():
             Sales = 0
             Tech_support = 0
             Transport_moving = 0
+            Armed_Forces = 0
 
         elif (occupation == 'Other_service'):
             Other_service = 1
@@ -257,6 +304,7 @@ def predict():
             Sales = 0
             Tech_support = 0
             Transport_moving = 0
+            Armed_Forces = 0
 
         elif (occupation == 'Others_occupation'):
             Others_occupation = 1
@@ -272,6 +320,7 @@ def predict():
             Sales = 0
             Tech_support = 0
             Transport_moving = 0
+            Armed_Forces = 0
 
         elif (occupation == 'Priv_house_serv'):
             Priv_house_serv = 1
@@ -287,6 +336,7 @@ def predict():
             Sales = 0
             Tech_support = 0
             Transport_moving = 0
+            Armed_Forces = 0
         
         elif (occupation == 'Prof_specialty'):
             Prof_specialty = 1
@@ -302,6 +352,7 @@ def predict():
             Sales = 0
             Tech_support = 0
             Transport_moving = 0
+            Armed_Forces = 0
         
         elif (occupation == 'Protective_serv'):
             Protective_serv = 1
@@ -317,6 +368,7 @@ def predict():
             Sales = 0
             Tech_support = 0
             Transport_moving = 0
+            Armed_Forces = 0
 
         elif (occupation == 'Sales'):
             Sales = 1
@@ -332,6 +384,7 @@ def predict():
             Craft_repair = 0
             Tech_support = 0
             Transport_moving = 0
+            Armed_Forces = 0
 
         elif (occupation == 'Tech_support'):
             Tech_support = 1
@@ -347,9 +400,27 @@ def predict():
             Exec_managerial = 0
             Craft_repair = 0
             Transport_moving = 0
+            Armed_Forces = 0
 
         elif (occupation == 'Transport_moving'):
             Transport_moving = 1
+            Tech_support = 0
+            Sales = 0
+            Protective_serv = 0
+            Prof_specialty = 0
+            Priv_house_serv = 0
+            Others_occupation = 0
+            Other_service = 0
+            Machine_op_inspct = 0
+            Handlers_cleaners = 0
+            Farming_fishing = 0
+            Exec_managerial = 0
+            Craft_repair = 0
+            Armed_Forces = 0
+
+        elif (occupation == 'Armed_Forces'):
+            Armed_Forces = 1
+            Transport_moving = 0
             Tech_support = 0
             Sales = 0
             Protective_serv = 0
@@ -377,6 +448,7 @@ def predict():
             Sales = 0
             Tech_support = 0
             Transport_moving = 0
+            Armed_Forces = 0
 
         # relationship
         relationship = request.form["relationship"]
@@ -421,6 +493,7 @@ def predict():
             Own_child = 0
             Unmarried = 0
             Wife = 0
+            
         
     # race
         race = request.form["race"]
@@ -437,16 +510,16 @@ def predict():
             White = 0
 
         elif (race == 'Other'):
-            Black = 1
-            Asian_Pac_Islander = 0
-            Other = 0
-            White = 0
-        
-        elif (race == 'White'):
-            White = 1
+            Other = 1
             Black = 0
             Asian_Pac_Islander = 0
+            White = 0
+
+        elif (race == 'White'):
+            White = 1
             Other = 0
+            Black = 0
+            Asian_Pac_Islander = 0
             
         else:
             Asian_Pac_Islander = 0
@@ -505,9 +578,7 @@ def predict():
             Ireland = 0
             Hungary = 0
             Holand_Netherlands = 0
-
-
-        
+      
         elif (country == 'Cuba'):
             Cuba = 1
             United_States = 0
@@ -2273,7 +2344,7 @@ def predict():
             Hungary = 0
             Holand_Netherlands = 0
 
-        age = int(request.form["age"])
+        age = request.form["age"]
 
         cg = request.form["capital_gain"]
 
@@ -2289,6 +2360,7 @@ def predict():
             Self_emp_inc,
             Self_emp_not_inc,
             State_gov,
+            Without_pay,
             Bachelors,
             College,
             Doctorate,
@@ -2299,6 +2371,7 @@ def predict():
             Married_spouse_absent,
             Never_married,
             Separated,
+            Widowed,
             Craft_repair,
             Exec_managerial,
             Farming_fishing,
@@ -2312,12 +2385,14 @@ def predict():
             Sales,
             Tech_support,
             Transport_moving,
+            Armed_Forces,
             Not_in_family,
             Other_relative,
             Own_child,
             Unmarried,
             Wife,
             Asian_Pac_Islander,
+            Black,
             Other,
             White,
             Male,
@@ -2368,15 +2443,16 @@ def predict():
             hpw
         ]])
 
-        output=round(prediction[0],2)
+        if prediction == 1:
+            output = "Income is more than 50K"
+    
+        elif prediction == 0:
+            output = "Income is less than 50K"
 
-        return render_template('home.html',prediction_text="Salary of an employee is Rs. {}".format(output))
+        return render_template('home.html',prediction_text="Salary of an employee is {}".format(output))
 
 
     return render_template("home.html")
-
-
-
 
 if __name__ == "__main__":
     app.run(debug=True)
