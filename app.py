@@ -16,6 +16,15 @@ def home():
 @app.route("/predict", methods = ["GET", "POST"])
 @cross_origin()
 def predict():
+
+    age = request.form["age"]
+
+    cg = request.form["capital_gain"]
+
+    cl = request.form["capital_loss"]
+
+    hpw = request.form["hours_per_week"]
+
     if request.method == "POST":
 
         # workclass
@@ -74,7 +83,7 @@ def predict():
             Local_gov = 0
             Without_pay = 0
         
-        elif (workclass=='State_gov'):
+        elif (workclass=='Without_pay'):
             Without_pay = 1
             State_gov = 0
             Self_emp_not_inc = 0
@@ -100,7 +109,6 @@ def predict():
             Doctorate = 0
             Masters = 0
             school = 0
-            status_Married_AF_spouse = 0
 
         elif (education == 'College'):
             College = 1
@@ -108,7 +116,6 @@ def predict():
             Doctorate = 0
             Masters = 0
             school = 0
-            status_Married_AF_spouse = 0
 
         elif (education == 'Doctorate'):
             Doctorate = 1
@@ -116,7 +123,6 @@ def predict():
             Bachelors = 0
             Masters = 0
             school = 0
-            status_Married_AF_spouse = 0
 
         elif (education == 'Masters'):
             Masters = 1
@@ -124,7 +130,6 @@ def predict():
             College = 0
             Bachelors = 0
             school = 0
-            status_Married_AF_spouse = 0
 
         elif (education == 'school'):
             school = 1
@@ -132,16 +137,6 @@ def predict():
             Doctorate = 0
             College = 0
             Bachelors = 0
-            status_Married_AF_spouse = 0
-
-        elif (education == 'school'):
-            status_Married_AF_spouse = 1
-            school = 0
-            Masters = 0
-            Doctorate = 0
-            College = 0
-            Bachelors = 0
-
 
         else:
             Bachelors = 0
@@ -201,12 +196,12 @@ def predict():
             Married_AF_spouse = 0
 
         else:
-            Widowed = 0
-            Separated = 0
-            Never_married = 0
-            Married_spouse_absent = 0
-            Married_civ_spouse = 0
             Married_AF_spouse = 0
+            Married_civ_spouse = 0
+            Married_spouse_absent = 0
+            Never_married = 0
+            Separated = 0
+            Widowed = 0
 
         # occupation
         occupation = request.form["occupation"]
@@ -2344,16 +2339,12 @@ def predict():
             Hungary = 0
             Holand_Netherlands = 0
 
-        age = request.form["age"]
-
-        cg = request.form["capital_gain"]
-
-        cl = request.form["capital_loss"]
-
-        hpw = request.form["hours_per_week"]
-
         
         prediction=model.predict([[
+            age,
+            cg,
+            cl,
+            hpw,
             Local_gov,
             Never_worked,
             Private,
@@ -2436,18 +2427,14 @@ def predict():
             Hong,
             Ireland,
             Hungary,
-            Holand_Netherlands,
-            age,
-            cg,
-            cl,
-            hpw
+            Holand_Netherlands
         ]])
 
         if prediction == 1:
-            output = "Income is more than 50K"
+            output = ">50K"
     
-        elif prediction == 0:
-            output = "Income is less than 50K"
+        else:
+            output = "<=50K"
 
         return render_template('home.html',prediction_text="Salary of an employee is {}".format(output))
 
